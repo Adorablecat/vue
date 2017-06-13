@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p v-text="msg"></p>
+        <p v-text=" 'andy' "></p>
+        <hr>
+        <p>{{s1}}</p>
+        <p v-text="s1"></p>
+        <p v-html="s1"></p>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                msg : 'vue.js',
+                s1 : '<h2>二级标题</h2>'
+            }
+        });
+    </script>
+</body>
+</html>
