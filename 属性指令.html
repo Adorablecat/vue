@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <img src="http://www.baidu.com/img/bd_logo1.png" alt="">
+        <hr>
+        <p>{{pic}}</p>
+        <!-- <img src="{{pic}}" alt=""> -->
+
+        <p v-text="pic"></p>
+        <img v-bind:src="pic" alt="">
+        <hr>
+        <a v-bind:href="site">百度</a>
+        <hr>
+        <img :src="pic" alt="">
+        <a :href="site">百度</a>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                pic : "http://www.baidu.com/img/bd_logo1.png",
+                site : 'http://www.baidu.com'
+            }
+        });
+    </script>
+</body>
+</html>
