@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <h2 v-if="show">这是条件指令</h2>
+        <hr>
+        <p v-if="grade == 'A'">分数在90~99</p>
+        <p v-else-if="grade == 'B'">分数在80~89</p>
+        <p v-else-if="grade == 'C'">分数在70~79</p>
+        <p v-else>分数在70以下</p>
+
+        <hr>
+
+        <template v-show="show">
+            <h2>标题</h2>
+            <p>内容</p>
+        </template>
+        <hr>
+
+        <h3 v-show="show">v-show的用法</h3>
+
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                show : true, //是否显示
+                grade : 'A' //表示等级
+            }
+        });
+    </script>
+</body>
+</html>
