@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in book">{{index}}--{{item}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(value,key,index) in dog">{{index}}--{{key}}--{{value}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="item in 10">{{item}}</li>
+        </ul>
+
+        <hr>
+        <template v-for="item in products">
+            <h3>{{item.category}}</h3>
+            <ul>
+                <li v-for="goods in item.goods">{{goods}}</li>
+            </ul>
+        </template>
+        
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el : '#app',
+            data : {
+                book : ['大学','中庸','论语','孟子'],
+                dog : {
+                    name : '啸天',
+                    age : 1000
+                },
+                products:[
+                    {
+                        category:'手机',
+                        goods : ['iphone 7','华为mate 9','小米6']
+                    },
+                    {
+                        category:'运动鞋',
+                        goods : ['李宁','安踏','乔丹']
+                    },
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
