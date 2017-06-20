@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>过滤器</h2>
+        <p>{{msg}}</p>
+        <p>{{msg.toUpperCase()}}</p>
+        <p>{{msg | capitalize | filter3 }}</p>
+
+        <p>{{msg | filter2('aaa') }}</p>
+        <hr>
+        <p>中文时间：{{time}}</p>
+        <p>英文时间：{{time}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                // time : '2012年1月1日 10:10:10',
+                time : new Date('2012-1-1 10:10:10'),
+                msg : "vue.js"
+            },
+            //定义过滤器
+            filters : {
+                //首字母大写
+                capitalize : function(str){
+                    return str.charAt(0).toUpperCase() + str.slice(1);
+                },
+                filter2 : function(s1,s2){
+                    return s1.charAt(0).toUpperCase() + s1.slice(1) + s2;
+                },
+                filter3 : function(str){
+                    return str + '------';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
