@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{reverseMsg()}}</p>
+        <p>{{reverseMsg()}}</p>
+        <p>{{reverseMsg()}}</p>
+        <p>{{reverseMsg()}}</p>
+        <hr>
+        <p>{{revMsg}}</p>
+        <p>{{revMsg}}</p>
+        <p>{{revMsg}}</p>
+        <p>{{revMsg}}</p>
+        <p>{{book}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                msg : 'dog',
+                book : 'vue'
+            },
+            methods : {
+                reverseMsg : function(){
+                    console.log('调用方法了');
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            computed: {
+                revMsg : function(){
+                    console.log('调用计算属性了');
+                    return this.msg.split('').reverse().join('');
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
