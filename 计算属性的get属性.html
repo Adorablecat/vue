@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>  <!-- get 特性 -->
+    <!--    <p>{{msg = 'live'}}</p> --> <!-- set 特性 -->
+
+        <p>{{reverseMsg}}</p> <!-- get 特性 -->
+        <p>{{reverseMsg = 'hello'}}</p>
+
+        <p>{{msg}}</p>
+        <p>{{reverseMsg}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                msg : "dog"
+            },
+            computed : {
+                // reverseMsg : function(){
+                //     return this.msg.split('').reverse().join('');
+                // }
+                reverseMsg : {
+                    get : function(){
+                        return this.msg.split('').reverse().join('');    
+                    }
+                    // set :
+                }
+            }
+        });
+    </script>
+</body>
+</html>
