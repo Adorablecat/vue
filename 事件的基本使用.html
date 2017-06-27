@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+    <style>
+        #app div {width: 100px; height: 100px; border: 1px solid #ccc;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-show="show">事件的基本使用</div>
+        <br>
+        <!-- <button type="button" @click="f1">按钮</button> -->
+        <button type="button" @click="show = !show">按钮</button>
+
+        <button type="button" @click="f2('a',$event)">事件对象</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                show : true
+            },
+            methods : {
+                f1 : function(){
+                    this.show = !this.show;
+                },
+                f2 : function(p1,evt){
+                    console.log(p1);
+                    console.log(evt);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
