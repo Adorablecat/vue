@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-show="show">事件修饰符</div>
+
+        <!-- <a href="http://www.baidu.com" @click="f1($event)">百度一下</a> -->
+        <a href="http://www.baidu.com" @click.prevent="show=!show">百度一下</a>
+
+        <hr>
+
+        <div @click="f2">
+            <h2>商品名称</h2>
+            <p>商品内容</p>
+            <!-- <button type="button" @click="f3($event)">添加购物车</button> -->
+            <button type="button" @click.once.stop="f3">添加购物车</button>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                show : true
+            },
+            methods : {
+                f1 : function(evt){
+                    this.show = !this.show;
+                    //阻止默认事件
+                    evt.preventDefault();
+                },
+                f3 : function(){
+                    alert('添加到购物车');
+                    // evt.stopPropagation();
+                },
+                f2 : function(){
+                    alert('商品详情');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
