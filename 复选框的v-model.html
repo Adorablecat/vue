@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 布尔值的用法 -->
+        <input type="checkbox" v-model="agree">是否已经阅读并同意协议
+        <p>{{agree}}</p>
+
+        <hr>
+        <label for="">请选择你喜欢的美女：</label>
+        <input type="checkbox" value="贵妃" v-model='beauty'>杨玉环
+        <input type="checkbox" value="蝉" v-model='beauty'>貂蝉
+        <input type="checkbox" value="施" v-model='beauty'>西施
+        <input type="checkbox" value="昭君" v-model='beauty'>王昭君
+        <p>{{beauty}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                agree : true,
+                beauty : ['施']
+            }
+        });
+    </script>
+</body>
+</html>
