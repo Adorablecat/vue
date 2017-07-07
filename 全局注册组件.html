@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <my-header></my-header>
+        <hr>
+        <my-header></my-header>
+        <hr>
+        <my-home></my-home>
+    </div>
+
+    <div id="test">
+        <h1>test组件</h1>
+        <my-header></my-header>
+    </div>
+
+    <script>
+        //全局注册组件
+        Vue.component('my-header',{
+            template : '<div><h3>自定义的头</h3><p>组件</p></div>'
+        });
+        //在外部先定义一个对象
+        var Home = {
+            template : "<div><h4>Home组件头</h4><p>Home组件内容</p></div>"
+        };
+        //将对象注册为组件
+        Vue.component('my-home',Home);
+        var vm = new Vue({
+            el : "#app",
+            data : {}
+        });
+        var vm2 = new Vue({
+            el : "#test"
+        });
+
+    </script>
+
+    <script>
+        //定义变量
+        var a = 100; //声明并赋值
+
+        var b; //声明变量
+        b = 200; //赋值
+
+    </script>
+</body>
+</html>
