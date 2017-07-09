@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <my-header></my-header>
+        <hr>
+        <my-footer></my-footer>
+        <hr>
+        <my-home></my-home>
+    </div>
+
+
+    <div id="test">
+        <my-header></my-header>
+    </div>
+    <script>
+        //先定义以对象，是普通对象，具备组件的特点
+        var Home = {
+            template : '<div><h3>home组件</h3><p>home组件的内容</p></div>'
+        };
+        var vm = new Vue({
+            el : "#app",
+            data : {},
+            //注册局部组件
+            components: {
+                "my-header" : {
+                    template : '<div><h2>my-header</h2><p>头部</p></div>'
+                },
+                "my-footer" : {
+                    template : '<div><h3>my-footer</h3><p>底部</p></div>'
+                },
+                //将Home对象注册为局部组件
+                "my-home" : Home
+            },
+        });
+
+        var vm2 = new Vue({
+            el : "#test"
+        });
+    </script>
+</body>
+</html>
