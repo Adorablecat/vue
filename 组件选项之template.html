@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <my-header></my-header>
+
+        <my-footer></my-footer>
+
+        <hr>
+
+        <my-home></my-home>
+    </div>
+
+    <template id="t1">
+        <div>
+            <h3>my-footer</h3>
+            <p>这是my-footer组件</p>
+        </div>
+    </template>
+
+    <script type="text/x-template" id="t2">
+        <div>
+            <h3>my-home</h3>
+            <p>这是my-home组件</p>
+        </div>
+    </script>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+            },
+            components : {
+                'my-header' : {
+                    template : ["<div>",
+                                    "<h3>自定义header组件</h3>",
+                                    "<p>header组件内容</p>",
+                                    "<ul>",
+                                        "<li>html</li>",
+                                        "<li>css</li>",
+                                        "<li>js</li>",
+                                    "</ul>",
+                                "</div>"].join("")
+                },
+                'my-footer' : {
+                    template : "#t1"
+                },
+                "my-home": {
+                    template : "#t2"
+                }
+            }
+        });
+    </script>
+</body>
+</html>
