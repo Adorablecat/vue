@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <!-- 根组件 -->
+    <div id="app">
+        <h2>{{root}}</h2>
+        <!-- <p>{{header}}</p> -->
+        <!-- 使用my-header组件 -->
+        <my-header></my-header>
+        <hr>
+        <my-footer></my-footer>
+    </div>
+
+    <template id="t1">
+        <div>
+            <h2>header组件 ----- {{header}}</h2>
+            <p>header组件内容</p>
+        </div>
+    </template>
+
+    <template id="t2">
+        <div>
+            <h2>footer组件 ------ {{footer}}</h2>
+            <p>footer组件内容</p>
+            <p>{{header}}</p>
+        </div>
+    </template>
+    <script>
+        //vm的实例，相当于创建了一个根组件
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                root : 'root组件'
+            },
+            components : {
+                'my-header' : {
+                    template : "#t1",
+                    data : function(){
+                        return {
+                            header : 'header组件'
+                        }
+                    }
+                },
+                'my-footer' : {
+                    template : "#t2",
+                    data : function(){
+                        return {
+                            footer : 'footer组件'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
