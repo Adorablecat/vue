@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>父组件</h2>
+        <my-header :info="root" :message="msg"></my-header>
+    </div>
+    <template id="t1">
+        <div>
+            <h2>来自父组件的数据---{{info}} --- {{message}}</h2>
+        </div>
+    </template>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                root : 'root组件',
+                msg : 100
+            },
+            components : {
+                'my-header' : {
+                    template : "#t1",
+                    //声明props，来接受从父组件传递过来的数据
+                    // props : {
+                    //     // info : String, //接受一个字符串类型的info属性
+                    //     info : {
+                    //         type : String, //设置数据类型
+                    //         required : true,  //设置是否是必须的
+                    //     },
+                    //     message : {
+                    //         type : Number,
+                    //         default : 250, //表示默认值
+                    //     },
+                    //     // p1 : Object  //简写方式
+                    // }
+                    //以数组的形式来设置props
+                    props : ['info','message']
+                }
+            }
+        });
+    </script>
+</body>
+</html>
