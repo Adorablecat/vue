@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>父组件</h2>
+        <input type="text" placeholder="输入用户名" v-model="username">
+        <p>你输入的用户名是：{{username}}</p>
+        <hr>
+        <my-child :nickname="username"></my-child>
+    </div>
+
+    <template id="t1">
+        <div>
+            <h3>子组件</h3>
+            <p>来自父组件的输入：{{nickname}}</p>
+        </div>
+    </template>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                username : ""
+            },
+            components : {
+                'my-child' : {
+                    template : "#t1",
+                    props : {
+                        nickname : String
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
