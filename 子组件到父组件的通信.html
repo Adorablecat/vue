@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>父组件</h2>
+        <p>来自子组件的输入：{{msg}}</p>
+        <hr>
+        <my-child @tansfer="getUser"></my-child>
+    </div>
+
+    <template id="t1">
+        <div>
+            <h3>子组件</h3>
+            <input type="text" @keyup='send' v-model="username" placeholder="请输入用户名">
+            <p>输入的用户名：{{username}}</p>
+        </div>
+    </template>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                msg : ""
+            },
+            methods : {
+                getUser : function(evt){
+                    console.log(evt);
+                    this.msg = evt;
+                }
+            },
+            components : {
+                'my-child' : {
+                    template : "#t1",
+                    data : function(){
+                        return {
+                            username : ""
+                        }
+                    },
+                    methods : {
+                        send : function(){
+                            //此时，就需要发射事件
+                            this.$emit('tansfer',this.username);
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
