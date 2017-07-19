@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{f1()}}</p>
+        <p>{{reverseMsg}}</p>
+        <p>{{msg | filter1('aaaaaaa')}}</p>
+        <hr>
+        <my-child></my-child>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                msg : 'vue.js'
+            },
+            methods : {
+                f1 : function(){
+                    return 'f1';
+                }
+            },
+            computed : {
+                reverseMsg : function(){
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            filters : {
+                filter1 : function(s1,s2){
+                    return s1 + "---" + s2;
+                }
+            },
+            components : {
+                'my-child' : {
+                    template : "<h2>子组件---{{message}} --- {{f2()}} --- {{cp1}} \
+                                --- {{message | filter2('bbbb')}}</h2>",
+                    data : function(){
+                        return {
+                            'message' : 'child'
+                        };
+                    },
+                    methods : {
+                        f2 : function(){
+                            return 'f2';
+                        }
+                    },
+                    computed : {
+                        cp1 : function(){
+                            return this.message + '组件的computed'
+                        }
+                    },
+                    filters : {
+                        filter2 : function(s1,s2){
+                            return s1 + "?????????" + s2;
+                        }
+                    }
+
+                }
+            }
+        });
+        console.log(vm);
+
+    </script>
+</body>
+</html>
