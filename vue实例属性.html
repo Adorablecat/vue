@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <h3 ref='title'>标题</h3>
+        <p>{{sum}}</p>
+        <button type="button" @click="setTitle">按钮</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                a : 100,
+                b : 200
+            },
+            computed : {
+                sum : function(){
+                    return this.a + this.b;
+                }
+            },
+            methods : {
+                setTitle : function(){
+                    //可以通过this.$refs.title获取h3元素
+                    console.log(this.$refs.title);
+                    this.$refs.title.innerHTML = 'new title！';
+                }
+            }
+        });
+        console.log(vm);
+        //在vm对象之外
+        console.log(vm.$el);
+        console.log(vm.a, vm.b);
+        console.log(vm.$data);
+    </script>
+</body>
+</html>
