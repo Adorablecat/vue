@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- view 视图  -->
+        <h2>视图，就是html结构</h2>
+        <ul>
+            <li>{{name}}</li>
+            <li>{{price}}</li>
+            <li>{{author}}</li>
+        </ul>
+    </div>
+    <script>
+        //定义一个js对象，作为model 数据
+        var book = {
+            name : 'vue.js',
+            price : 999,
+            author : 'andy'
+        };
+        //vue对象就是view model，简称为vm
+        var vm = new Vue({
+            el : "#app",
+            data : book
+        });
+    </script>
+</body>
+</html>
